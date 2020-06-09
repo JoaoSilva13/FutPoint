@@ -1,0 +1,142 @@
+{% extends "layout.html" %}
+
+{% set pageId = "page-create-point" %}
+
+{% block title %}
+<title>Criar um ponto de campo society</title>
+{% endblock title %}
+
+{% block styles %}
+<link rel="stylesheet" href="./styles/create-point.css">
+<link rel="stylesheet" href="./styles/modal.css">
+{% endblock styles %}
+
+{% block content %}
+{% include "partials/page-header.html" %}
+
+<form action="/savepoint" method="POST">
+    <legend>
+        <h1>Cadastro do campo society</h1>
+        <img src="./icones/pin.png" alt="Lâmpadas">
+    </legend>
+
+
+    <fieldset>
+        <legend>
+            <h2>Dados da entidade</h2>
+        </legend>
+
+        <div class="field-group">
+            <div class="field">
+                <label for="name">Nome da entidade</label>
+                <input type="text" name="name" requerid="requerid">
+            </div>
+            <div class=" field">
+                <label for="name">Imagem da entidade</label>
+                <input type="url" name="image" placeholder="http://" requerid="requerid">
+            </div>
+        </div>
+
+        <div class=" field-group">
+            <div class="field">
+                <label for="address">Endereço</label>
+                <input type="text" name="address" requerid="requerid">
+            </div>
+            <div class=" field">
+                <label for="number">Número/Complemento</label>
+                <input type="text" name="address2" requerid="requerid">
+
+            </div>
+        </div>
+
+        <div class=" field-group">
+            <div class="field">
+                <label for="state">Estado</label>
+                <select name="uf" requerid="requerid">
+                    <option value="">Selecione o Estado</option>
+                </select>
+
+                <input type="hidden" name="state">
+
+            </div>
+
+            <div class="field">
+                <label for="city">Cidade</label>
+                <select name="city" disabled requerid="requerid">
+                    <option value="">Selecione a Cidade</option>
+                </select>
+
+
+            </div>
+
+        </div>
+
+    </fieldset>
+
+    <fieldset>
+        <legend>
+            <h2>Itens que o campo society possui</h2>
+            <spam>Selecione um ou mais itens abaixo</spam>
+        </legend>
+
+        <div class=" items-grid">
+            <li data-id="Lâmpadas">
+                <img src="./icones/lanchonete.png" alt="Lanchonete">
+                <spam>Lanchonete</spam>
+            </li>
+
+            <li data-id="Pilhas e Baterias">
+                <img src="./icones/noite.png" alt="Jogos Noturnos">
+                <spam>Jogos Noturnos</spam>
+            </li>
+
+            <li data-id="Papéis e Papelão">
+                <img src="./icones/colete.png" alt="Coletes">
+                <spam>Coletes</spam>
+            </li>
+
+            <li data-id="Resíduos Eletrônicos">
+                <img src="./icones/wifi.png" alt="Wifi">
+                <spam>Wifi</spam>
+            </li>
+
+            <li data-id="Resíduos Orgânicos">
+                <img src="./icones/bola.png" alt="Bola Oficial">
+                <spam>Bola Oficial</spam>
+            </li>
+
+            <li data-id="Óleo de Cozinha">
+                <img src="./icones/trofeu.png" alt="Campeonatos Mensais">
+                <spam>Campeonatos Mensais</spam>
+            </li>
+        </div>
+
+        <input type="hidden" name="items">
+
+    </fieldset>
+
+
+
+
+
+
+    <button type="submit">Cadastrar campo society</button>
+
+</form>
+
+{% endblock content %}
+
+{% block modal %}
+{% if saved %}
+{% include "partials/point-created.html" %}
+{% endif %}
+{% if error %}
+{% include "partials/point-error.html" %}
+{% endif %}
+{% endblock modal %}
+
+
+
+{% block scripts %}
+<script src="./scripts/create-point.js"></script>
+{% endblock scripts %}
